@@ -8,10 +8,6 @@
     color: #ff0000;
 }
 
-.conteiner{
-    display: flex;
-}
-
 .menu{
     display: flex; /* itens ficarem lado a lado */
     justify-content: space-evenly;
@@ -20,4 +16,45 @@
     width: 100%;
     background-color: #000000;
     color: #ffffff;
+    border-bottom: 5px solid #daa520;
+}
+
+.menu-lives{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-time h2:nth-child(2), .menu-score h2:nth-child(2){
+    /* :nth-child() atributos de filhos de h2 */
+    margin-top: 10px;
+}
+
+/* Main */
+
+.conteiner{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url(/imagens/wall.png);
+}
+   
+.panel{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square{
+    height: 150px;
+    border: 1px solid #000000;
+    width: 150px;
+    background-color: #83f8f8;
+}
+
+.enemy{
+    background-image: url(/imagens/ralph.png);
+    background-repeat: no-repeat;
+    background-size: cover;
 }

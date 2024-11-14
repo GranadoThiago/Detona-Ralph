@@ -6,15 +6,14 @@ const state = {
         score: document.querySelector("#score"),
     },
     values: {
-        timerId: null,
-        countDownTimerId: setInterval(countDown, 1000),
         gameVelocity: 1000,
         hitPosition: 0,
         result: 0,
         curretTime: 60, 
     },
-    actions{
-
+    actions: {
+        timerId: setInterval(randomSquare, 1000),
+        countDownTimerId: setInterval(countDown, 1000),
     },
 };
 
@@ -33,9 +32,12 @@ function randomSquare(){
 
 /* Função para mover o Enemy */
 
-/* function moveEnemy(){
-    state.values.timerId = setInterval(randomSquare, state.values.gameVelocity);
-} */
+/* função alocada em state.actions
+    function moveEnemy(){
+        state.values.timerId = setInterval(randomSquare, state.values.gameVelocity);
+} 
+
+*/
 
 
 /* Função para mudar o alvo */
@@ -46,6 +48,7 @@ function addListenerHitBox() {
                 state.values.result++;
                 state.view.score.textContent = state.values.result;
                 state.values.hitPosition = null;
+                playSound("hit");
             }
         })
     });
@@ -58,17 +61,24 @@ function countDown(){
     state.view.timeLeft.textContent = state.values.curretTime;
 
         if(state.values.curretTime <= 0){
-            clearInterval(state)
+            clearInterval(state.actions.countDownTimerId);
+            clearInterval(state.actions.timerId);
             alert("Game is Over! O seu resultado foi: " + state.values.result);
     }
 }
 
+/* Função para o Audio */
 
+function playSound(audioName){
+    let audio = new Audio(`./audios/${audioName}.m4a`);
+    audio.play();
+    audio.volume = 0.2;
+}
 
 /* Função Inicial */
 
 function init() {
-/*     moveEnemy(); */
+//  moveEnemy();    função alocada em state.actions
     addListenerHitBox();
 }
 

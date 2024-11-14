@@ -54,7 +54,7 @@
 }
 
 .enemy{
-    background-image: url(imagens/ralph.png);
+    background-image: url("./imagens/ralph.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
